@@ -1,2 +1,2 @@
-# steempress
-A Wordpress plugin that integrates with steem
+# SteemPress
+A Wordpress plugin that integrates with steem.
