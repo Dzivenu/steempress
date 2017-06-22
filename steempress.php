@@ -2,11 +2,11 @@
 
 /**
 * Plugin Name: SteemPress
-* Plugin URI: http://steempress.amexperts.com
+* Plugin URI: http://steempress.amexpertsonline.com
 * Description: Plugin for wordpress that integrates with steem
 * Version: 0.1
 * Author: Adam Martin
-* Author URI: http://www.amexperts.com
+* Author URI: http://www.amexpertsonline.com
 * License: GPLv3 or later
 */
 
@@ -29,3 +29,4 @@
 if ( ! defined('ABSPATH') ) exit;
 
 include dirname( __FILE__ ) .'/steempress-admin.php';
+include dirname( __FILE__ ) . '/steempress-bootstrap.php';
