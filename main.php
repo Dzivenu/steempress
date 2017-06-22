@@ -16,32 +16,6 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-if ( ! defined('ABSPATH') ) exit;
-
-// Admin Menu
-function steempress_menu() {
-  add_menu_page(
-    'SteemPress',
-    'SteemPress',
-    'manage_options',
-    'steempress',
-    '',
-    '',
-    3
-  );
-  add_submenu_page(
-    'steempress',
-    'Information',
-    'Information',
-    'manage_options',
-    'steempress'
-  );
-  add_submenu_page(
-    'steempress',
-    'Settings',
-    'Settings',
-    'manage_options',
-    'steempress-settings'
-  );
+if ( is_admin() ) {
+	require_once SP_PLUGIN_DIR . '/includes/admin.php';
 }
-add_action('admin_menu', 'steempress_menu');

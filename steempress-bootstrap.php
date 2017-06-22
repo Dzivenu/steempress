@@ -27,7 +27,7 @@ function my_add_action_links( $actions, $plugin_file ) {
 
   'settings' => array(
     'label' => __('Settings', 'my_domain'),
-    'url'   => get_admin_url(null, 'options-general.php?page=my-plugin-options')
+    'url'   => get_admin_url(null, 'admin.php?page=steempress-settings')
   ));
 
   return plugin_action_links( $actions, $plugin_file, $action_links, 'before');

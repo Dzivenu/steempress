@@ -1,15 +1,5 @@
 <?php
 
-/**
-* Plugin Name: SteemPress
-* Plugin URI: http://steempress.amexpertsonline.com
-* Description: Plugin for wordpress that integrates with steem
-* Version: 0.1.1
-* Author: Adam Martin
-* Author URI: http://www.amexpertsonline.com
-* License: GPLv3 or later
-*/
-
 /*
   Copyright 2017 AM Experts
   This program is free software: you can redistribute it and/or modify
@@ -25,8 +15,30 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-define( 'SP_VERSION', '0.1' );
-define( 'SP_PLUGIN', __FILE__ );
-define( 'SP_PLUGIN_DIR', untrailingslashit( dirname( SP_PLUGIN ) ) );
 
-require_once SP_PLUGIN_DIR . '/main.php';
+function sp_plugin_url( $path = '' ) {
+	$url = plugins_url( $path, SP_PLUGIN );
+
+	if ( is_ssl() && 'http:' == substr( $url, 0, 5 ) ) {
+		$url = 'https:' . substr( $url, 5 );
+	}
+
+	return $url;
+}
+
+function sp_get_options() {
+    static $options;
+
+    if (!$options) {
+        $defaults = require SP_PLUGIN_DIR . '/config/default-settings.php';
+        $options = (array)get_option('sp', array());
+        $options = array_merge($defaults, $options);
+    }
+
+    /**
+     * Filters the SteemPress settings (general).
+     *
+     * @param array $options
+     */
+    return apply_filters('sp_settings', $options);
+}
